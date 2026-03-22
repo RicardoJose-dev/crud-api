@@ -1,5 +1,5 @@
 import { randomUUID } from "crypto"
-import { Product } from "./types/domain"
+import { Product } from "./types/domain.js"
 
 const categories = [
   "electronics",
@@ -67,7 +67,7 @@ const productNames = [
   "File Cabinet",
 ]
 
-function getRandomElement(arr) {
+function getRandomElement(arr: string[]) {
   return arr[Math.floor(Math.random() * arr.length)]
 }
 
@@ -75,7 +75,7 @@ function getRandomPrice() {
   return Number((Math.random() * 100 + 5).toFixed(2))
 }
 
-function getRandomDescription(name, category) {
+function getRandomDescription(name: string, category: string) {
   return `High-quality ${name.toLowerCase()} for your ${category} needs.`
 }
 

@@ -5,9 +5,9 @@ import {
   createProduct,
   updateProduct,
   removeProductById,
-} from "./services/productService"
-import { UPDATE_PRODUCT_FIELDS } from "./services/constants"
-import { ProductParams, ProductBody } from "./types/domain"
+} from "./services/productService.js"
+import { UPDATE_PRODUCT_FIELDS } from "./services/constants.js"
+import { ProductParams, ProductBody } from "./types/domain.js"
 
 export const setRoutes = (fastify: FastifyInstance) => {
   fastify.get("/api/products", function handler(_, reply: FastifyReply) {

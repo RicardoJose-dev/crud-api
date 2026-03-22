@@ -1,6 +1,6 @@
 import { randomUUID } from "crypto"
-import products from "../db"
-import { Product, ProductBody } from "../types/domain"
+import products from "../db.js"
+import { Product, ProductBody } from "../types/domain.js"
 
 export function getAllProducts(): Product[] {
   return products
