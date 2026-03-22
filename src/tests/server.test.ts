@@ -15,6 +15,27 @@ describe("Server routes", () => {
     expect(JSON.parse(response.body)).toHaveLength(5)
   })
 
+  it("should return a product by id", async () => {
+    const productId = "dc734275-e690-479f-b793-394548ae78fb"
+
+    const response = await fastify.inject({
+      method: "GET",
+      url: `/api/products/${productId}`,
+    })
+
+    expect(response.statusCode).toBe(200)
+
+    expect(response.headers["content-type"]).toMatch(/application\/json/)
+    expect(JSON.parse(response.body)).toMatchObject({
+      id: productId,
+      name: "Tennis Racket",
+      description: "High-quality tennis racket for your garden needs.",
+      price: 76.26,
+      category: "garden",
+      inStock: true,
+    })
+  })
+
   it("should create a new product", async () => {
     const newProduct = {
       name: "Football",
@@ -31,9 +52,11 @@ describe("Server routes", () => {
     })
 
     expect(response.statusCode).toBe(201)
-    
+
     expect(JSON.parse(response.body).name).toEqual(newProduct.name)
-    expect(JSON.parse(response.body).description).toEqual(newProduct.description)
+    expect(JSON.parse(response.body).description).toEqual(
+      newProduct.description
+    )
     expect(JSON.parse(response.body).price).toEqual(newProduct.price)
     expect(JSON.parse(response.body).category).toEqual(newProduct.category)
     expect(JSON.parse(response.body).inStock).toEqual(newProduct.inStock)
