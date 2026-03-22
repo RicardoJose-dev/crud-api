@@ -7,7 +7,7 @@ import {
   removeProductById,
 } from "./services/productService.js"
 import { UPDATE_PRODUCT_FIELDS } from "./services/constants.js"
-import { ProductParams, ProductBody } from "./types/domain.js"
+import { RequestField, ProductParams, ProductBody } from "./types/domain.js"
 
 export const setRoutes = (fastify: FastifyInstance) => {
   fastify.get("/api/products", function handler(_, reply: FastifyReply) {
@@ -89,8 +89,10 @@ export const setRoutes = (fastify: FastifyInstance) => {
 
       //remove fields not valid for product objects
       const updateFields = Object.keys(body)
-        .filter((field) => UPDATE_PRODUCT_FIELDS.indexOf(field) !== -1)
-        .map((field) => ({ [field]: body[field] }))
+        .filter(
+          (field) => UPDATE_PRODUCT_FIELDS.indexOf(field as RequestField) !== -1
+        )
+        .map((field) => ({ [field]: body[field as RequestField] }))
         .reduce(
           (responseObj, currObj) => ({
             ...responseObj,

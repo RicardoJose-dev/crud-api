@@ -1,6 +1,6 @@
 import Fastify, { FastifyReply } from "fastify"
-import { addValidateProductId } from "./decorators"
-import { setRoutes } from "./router"
+import { addValidateProductId } from "./decorators.js"
+import { setRoutes } from "./router.js"
 
 const fastify = Fastify({
   logger: true,

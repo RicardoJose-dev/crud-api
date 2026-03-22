@@ -11,4 +11,6 @@ export interface ProductParams {
   productId: string
 }
 
+export type RequestField = Exclude<keyof Product, "id">
+
 export interface ProductBody extends Omit<Product, "id"> {}
