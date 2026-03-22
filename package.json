@@ -14,9 +14,9 @@
   "author": "",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev": "tsx watch -r dotenv/config src/server.ts",
-    "start:prod": "tsc && node -r dotenv/config dist/server.js"
+    "test": "vitest",
+    "start:dev": "tsx watch -r dotenv/config src/main.ts",
+    "start:prod": "tsc && node -r dotenv/config dist/main.js"
   },
   "dependencies": {
     "dotenv": "^17.3.1",
@@ -25,7 +25,9 @@
   "devDependencies": {
     "@tsconfig/node24": "^24.0.4",
     "@types/node": "^25.5.0",
+    "@vitest/ui": "^4.1.0",
     "tsx": "^4.21.0",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.0"
   }
 }
