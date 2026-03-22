@@ -80,7 +80,7 @@ describe("Server routes", () => {
   })
 
   it("should return 404 for non-existing product", async () => {
-    const doesnotexistId = "aaaaa"
+    const doesnotexistId = "bbbb"
 
     const response = await fastify.inject({
       method: "PUT",
